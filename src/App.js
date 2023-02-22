@@ -1,7 +1,11 @@
 import React from "react";
-
+import Videos from "./components/Videos";
 function App() {
-  return <div>App</div>;
+  return (
+    <div className="container">
+      <Videos />
+    </div>
+  );
 }
 
 export default App;

@@ -1,4 +1,10 @@
 import React from "react";
-import ReactDom from "react-dom";
+import ReactDOM from "react-dom";
+import "./index.css";
 import App from "./App";
-ReactDom.render(<App />, document.getElementById("root"));
+import registerServiceWorker from "./registerServiceWorker";
+import "bootstrap/dist/css/bootstrap.css";
+import "font-awesome/css/font-awesome.css";
+
+ReactDOM.render(<App />, document.getElementById("root"));
+registerServiceWorker();
