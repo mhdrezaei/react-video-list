@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
+import Like from "./common/Like";
 
 console.log(getMovies());
 export class Videos extends Component {
@@ -8,10 +9,20 @@ export class Videos extends Component {
   };
 
   handleDelete(video) {
-    const videos = this.state.videos.filter((vid) => video._id != vid._id);
+    const videos = this.state.videos.filter((vid) => video._id !== vid._id);
     this.setState({
       videos,
     });
+  }
+
+  handleLike(video) {
+    let videos = this.state.videos;
+    const index = videos.indexOf(video);
+    videos[index] = {
+      ...videos[index],
+    };
+    videos[index].like = !videos[index].like;
+    this.setState({videos});
   }
 
   render() {
@@ -29,6 +40,7 @@ export class Videos extends Component {
               <th>Stock</th>
               <th>Rate</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +50,12 @@ export class Videos extends Component {
                 <td>{video.genre.name}</td>
                 <td>{video.numberInStock}</td>
                 <td>{video.dailyRentalRate}</td>
+                <td>
+                  <Like
+                    liked={video.like}
+                    onClick={() => this.handleLike(video)}
+                  />
+                </td>
                 <td>
                   <button
                     className="btn btn-danger"
