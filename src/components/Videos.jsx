@@ -7,6 +7,13 @@ export class Videos extends Component {
     videos: getMovies(),
   };
 
+  handleDelete(video) {
+    const videos = this.state.videos.filter((vid) => video._id != vid._id);
+    this.setState({
+      videos,
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -27,7 +34,14 @@ export class Videos extends Component {
                 <td>{video.genre.name}</td>
                 <td>{video.numberInStock}</td>
                 <td>{video.dailyRentalRate}</td>
-                <td><button className="btn btn-danger" >Delete</button></td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => this.handleDelete(video)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
