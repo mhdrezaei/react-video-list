@@ -15,8 +15,12 @@ export class Videos extends Component {
   }
 
   render() {
+    const { length: count } = this.state.videos;
+
+    if (count === 0) return <p> there are no video in database</p>;
     return (
       <React.Fragment>
+        <p>Showing {count} movies in the database.</p>
         <table className="table">
           <thead>
             <tr>
